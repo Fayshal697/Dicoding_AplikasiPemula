@@ -1,30 +1,30 @@
 package com.example.speedstormapp
 
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.example.speedstormapp.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
+    private val list = ArrayList<Racer>()
 
-    // Inisialisasi ViewBinding
-    private lateinit var binding: ActivityDetailBinding
+    companion object {
+        const val EXTRA_PERSON = "extra_person"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detail)
 
-        // Mengatur binding untuk tampilan
-        binding = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val tvDetailName: TextView = findViewById(R.id.tv_detail_name)
+        val tvDetailDescription: TextView = findViewById(R.id.tv_detail_description)
+        val ivDetailPhoto: ImageView = findViewById(R.id.img_detail_photo)
 
-        // Mengambil data dari intent
-        val name = intent.getStringExtra("EXTRA_NAME")
-        val description = intent.getStringExtra("EXTRA_DESCRIPTION")
-        val photo = intent.getStringExtra("EXTRA_PHOTO")
+        val dataRacer = intent.getParcelableExtra<Racer>(EXTRA_PERSON)
 
-        // Mengatur data ke tampilan
-        binding.tvDetailName.text = name
-        binding.tvDetailDescription.text = description
-        Glide.with(this).load(photo).into(binding.imgDetailPhoto)
+        tvDetailName.text = dataRacer?.name
+        tvDetailDescription.text = dataRacer?.description
+        ivDetailPhoto.setImageResource((dataRacer?.photo ?: 0) as Int)
     }
 }
+

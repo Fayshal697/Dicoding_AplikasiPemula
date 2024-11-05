@@ -7,51 +7,35 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 
 class ListRacerAdapter(private val listRacer: ArrayList<Racer>) : RecyclerView.Adapter<ListRacerAdapter.ListViewHolder>() {
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_racer, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_row_racer, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, description, photo) = listRacer[position]
-        holder.tvName.text = name
-        holder.tvDescription.text = description
+        val racer = listRacer[position]
+        holder.tvName.text = racer.name
+        holder.tvDescription.text = racer.description
+
+        val photo = racer.photo
+        val drawableId = holder.itemView.context.resources.getIdentifier(photo, "drawable", holder.itemView.context.packageName)
+        holder.imgPhoto.setImageResource(drawableId)
 
         holder.itemView.setOnClickListener {
-            onItemClickCallback.onItemClicked(listRacer[holder.adapterPosition])
-            // Intent for detail activity
-            val context = holder.itemView.context
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("EXTRA_NAME", name)
-            intent.putExtra("EXTRA_DESCRIPTION", description)
-            intent.putExtra("EXTRA_PHOTO", photo)
-            context.startActivity(intent)
+            val intentDetail = Intent(holder.itemView.context, DetailActivity::class.java)
+            intentDetail.putExtra(DetailActivity.EXTRA_PERSON, listRacer[holder.adapterPosition])
+            holder.itemView.context.startActivity(intentDetail)
         }
-
-        Glide.with(holder.itemView.context)
-            .load(photo)
-            .into(holder.imgPhoto)
     }
 
     override fun getItemCount(): Int = listRacer.size
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
         val tvName: TextView = itemView.findViewById(R.id.tv_item_name)
         val tvDescription: TextView = itemView.findViewById(R.id.tv_item_descriptionn)
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Racer)
     }
 }

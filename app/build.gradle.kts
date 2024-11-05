@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("kotlin-android")
 }
 
 android {
@@ -47,6 +48,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.annotations)
+    implementation(libs.annotations)
+    implementation(libs.androidx.core.splashscreen)
     testImplementation(libs.junit)
     implementation (libs.glide)
     androidTestImplementation(libs.androidx.junit)
