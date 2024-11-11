@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.annotations)
     implementation(libs.annotations)
     implementation(libs.androidx.core.splashscreen)
+    implementation (libs.circleimageview)
     testImplementation(libs.junit)
     implementation (libs.glide)
     androidTestImplementation(libs.androidx.junit)

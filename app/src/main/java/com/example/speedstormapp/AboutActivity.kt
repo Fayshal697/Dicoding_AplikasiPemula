@@ -1,16 +1,14 @@
 package com.example.speedstormapp
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.speedstormapp.databinding.ActivityAboutBinding
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class AboutActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityAboutBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
-        setContentView(binding.root)
     }
 }
