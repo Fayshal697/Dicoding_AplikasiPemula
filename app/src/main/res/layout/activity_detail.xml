@@ -38,13 +38,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_toEndOf="@id/img_racer"
+            android:layout_toEndOf="@id/iv_racer_photo"
             android:padding="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_racer"
-            app:layout_constraintStart_toStartOf="@+id/img_racer"
-            app:layout_constraintTop_toBottomOf="@+id/img_racer"
+            app:layout_constraintEnd_toEndOf="@+id/iv_racer_photo"
+            app:layout_constraintStart_toStartOf="@+id/iv_racer_photo"
+            app:layout_constraintTop_toBottomOf="@+id/iv_racer_photo"
             tools:text="@string/racer_name" />
 
         <TextView

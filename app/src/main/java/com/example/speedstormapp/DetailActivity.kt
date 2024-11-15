@@ -21,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+
         val tvDetailName: TextView = findViewById(R.id.tv_racer_name)
         val tvDetailDescription: TextView = findViewById(R.id.tv_racer_description)
         val ivDetailPhoto: ImageView = findViewById(R.id.iv_racer_photo)
