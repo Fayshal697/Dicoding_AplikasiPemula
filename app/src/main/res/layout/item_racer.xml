@@ -28,7 +28,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_item_name"
+            android:id="@+id/tv_racer_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -42,16 +42,16 @@
             tools:text="@string/racer_name" />
 
         <TextView
-            android:id="@+id/tv_item_description"
+            android:id="@+id/tv_racer_description"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:maxLines="5"
             card_view:layout_constraintBottom_toBottomOf="@+id/iv_racer_photo"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_item_name"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_item_name"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_item_name"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_racer_name"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_racer_name"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_racer_name"
             card_view:layout_constraintVertical_bias="0.0"
             tools:text="@string/racer_description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
